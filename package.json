@@ -1,0 +1,22 @@
+{
+  "name": "cosmic-encounter-discord-bot",
+  "version": "1.0.0",
+  "description": "play cosmic encounter over Discord",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1010-games/cosmic-encounter-discord-bot.git"
+  },
+  "author": "Michael Garrido",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1010-games/cosmic-encounter-discord-bot/issues"
+  },
+  "homepage": "https://github.com/1010-games/cosmic-encounter-discord-bot#readme",
+  "dependencies": {
+    "@edium/fsm": "^2.1.3"
+  }
+}

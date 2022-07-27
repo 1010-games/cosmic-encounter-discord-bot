@@ -1,0 +1,13 @@
+{
+  "templates": {
+    "encounter-a": {
+      "description":"",
+      "target":"",
+      "special-effects":{}
+    }
+
+  },
+  "manifest": {
+
+  }
+}
