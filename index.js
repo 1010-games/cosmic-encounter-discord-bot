@@ -4,8 +4,66 @@ const { State, StateMachine } = require('@edium/fsm');
 
 const players = ['a','b','c','d','e','f']
 
+const context = {
+  currentPlayerPosition: 0,
+  players: players,
+  playerState: {},
+  turnsPlayed: 0,
+  turnsLimit: 6,
+  randomize: randomize
+};
+
 const randomize = (options) => {
   return Math.floor( Math.random() * options );
+}
+const shuffle = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+const createDeck = (templates, manifest) => {
+  let deck = []
+
+  for (const [key, value] of Object.entries(manifest)) {
+    for (let count = value; count > 0; count--) {
+      deck.push(templates[key]);
+    }
+  }
+  shuffle(deck)
+
+  return deck
+}
+
+const drawCards = (deck, cardsDrawn) => {
+  return deck.splice(0, cardsDrawn)
+}
+
+const setupGameObjects = async (context) => {
+  const deckConfig = await import('./encounter-deck.json', {
+    assert: { type: "json" }
+  })
+  const cosmicDeck = createDeck(deckConfig.default.templates, deckConfig.default.manifest)
+
+  context.cosmicDeck = encounterDeck
+}
+
+const setupPlayers = async (context) => {
+  context.players.forEach( (player) => {
+    let cosmicCardsDealt = drawCards(context.encounterDeck, 7)
+    let playerState = {
+      name: player,
+      cosmicCardsInHand: cosmicCardsDealt,
+      cards: {
+        encounter: [],
+        reinforcement: [],
+        artifact: [],
+        flare: []
+      }
+    }
+    context.playerState[player] = playerState
+  })
 }
 
 const entryAction = ( state, context ) => {
@@ -13,8 +71,13 @@ const entryAction = ( state, context ) => {
   state.trigger( "next" );
 };
 
-const startGameAction = ( state, context ) => {
+const startGameAction = async ( state, context ) => {
   console.log("start game")
+
+  await setupGameObjects(context)
+
+  await setupPlayers(context)
+
   // choose first player
   context.currentPlayerPosition = randomize(context.players.length)
   context.currentPlayer = context.players[context.currentPlayerPosition]
@@ -62,13 +125,7 @@ const finalAction = ( state ) => {
   console.log("finished")
 };
 
-const context = {
-  currentPlayerPosition: 0,
-  players: players,
-  turnsPlayed: 0,
-  turnsLimit: 6,
-  randomize: randomize
-};
+
 
 const stateMachine = new StateMachine('CosmicEncounter', context);
 const startGamePhase = stateMachine.createState( "startGame", false, startGameAction);

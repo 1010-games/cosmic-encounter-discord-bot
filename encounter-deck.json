@@ -1,13 +1,55 @@
 {
   "templates": {
     "encounter-a": {
+      "type":"encounter",
       "description":"",
-      "target":"",
+      "target":"a",
+      "special-effects":{}
+    },
+    "encounter-b": {
+      "type":"encounter",
+      "description":"",
+      "target":"b",
+      "special-effects":{}
+    },
+    "encounter-c": {
+      "type":"encounter",
+      "description":"",
+      "target":"c",
+      "special-effects":{}
+    },
+    "encounter-d": {
+      "type":"encounter",
+      "description":"",
+      "target":"d",
+      "special-effects":{}
+    },
+    "encounter-e": {
+      "type":"encounter",
+      "description":"",
+      "target":"e",
+      "special-effects":{}
+    },
+    "encounter-f": {
+      "type":"encounter",
+      "description":"",
+      "target":"f",
+      "special-effects":{}
+    },
+    "encounter-wild": {
+      "type":"encounter",
+      "description":"",
+      "target":"wild",
       "special-effects":{}
     }
-
   },
   "manifest": {
-
+    "encounter-a": 10,
+    "encounter-b": 10,
+    "encounter-c": 10,
+    "encounter-d": 10,
+    "encounter-e": 10,
+    "encounter-f": 10,
+    "encounter-wild": 10
   }
 }
