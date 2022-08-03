@@ -1,0 +1,277 @@
+{
+  "templates": {
+    "encounter-negotiate": {
+      "type":"encounter",
+      "description":"",
+      "value":0,
+      "special-effects":{
+        "negotiate":{}
+      }
+    },
+    "encounter-morph": {
+      "type":"encounter",
+      "description":"",
+      "value":0,
+      "special-effects":{
+        "morph":{}
+      }
+    },
+    "encounter-0": {
+      "type":"encounter",
+      "description":"",
+      "value":0,
+      "special-effects":{}
+    },
+    "encounter-1": {
+      "type":"encounter",
+      "description":"",
+      "value":1,
+      "special-effects":{}
+    },
+    "encounter-4": {
+      "type":"encounter",
+      "description":"",
+      "value":4,
+      "special-effects":{}
+    },
+    "encounter-5": {
+      "type":"encounter",
+      "description":"",
+      "value":0,
+      "special-effects":{}
+    },
+    "encounter-6": {
+      "type":"encounter",
+      "description":"",
+      "value":6,
+      "special-effects":{}
+    },
+    "encounter-7": {
+      "type":"encounter",
+      "description":"",
+      "value":7,
+      "special-effects":{}
+    },
+    "encounter-8": {
+      "type":"encounter",
+      "description":"",
+      "value":8,
+      "special-effects":{}
+    },
+    "encounter-9": {
+      "type":"encounter",
+      "description":"",
+      "value":9,
+      "special-effects":{}
+    },
+    "encounter-10": {
+      "type":"encounter",
+      "description":"",
+      "value":10,
+      "special-effects":{}
+    },
+    "encounter-11": {
+      "type":"encounter",
+      "description":"",
+      "value":11,
+      "special-effects":{}
+    },
+    "encounter-12": {
+      "type":"encounter",
+      "description":"",
+      "value":12,
+      "special-effects":{}
+    },
+    "encounter-13": {
+      "type":"encounter",
+      "description":"",
+      "value":13,
+      "special-effects":{}
+    },
+    "encounter-14": {
+      "type":"encounter",
+      "description":"",
+      "value":14,
+      "special-effects":{}
+    },
+    "encounter-15": {
+      "type":"encounter",
+      "description":"",
+      "value":15,
+      "special-effects":{}
+    },
+    "encounter-20": {
+      "type":"encounter",
+      "description":"",
+      "value":20,
+      "special-effects":{}
+    },
+    "encounter-23": {
+      "type":"encounter",
+      "description":"",
+      "value":23,
+      "special-effects":{}
+    },
+    "encounter-30": {
+      "type":"encounter",
+      "description":"",
+      "value":30,
+      "special-effects":{}
+    },
+    "encounter-40": {
+      "type":"encounter",
+      "description":"",
+      "value":0,
+      "special-effects":{}
+    },
+    "reinforcement-2": {
+      "type":"reinforcement",
+      "description":"",
+      "value":2,
+      "special-effects":{}
+    },
+    "reinforcement-3": {
+      "type":"reinforcement",
+      "description":"",
+      "value":3,
+      "special-effects":{}
+    },
+    "reinforcement-5": {
+      "type":"reinforcement",
+      "description":"",
+      "value":5,
+      "special-effects":{}
+    },
+    "artifact-stopCompReward": {
+      "type":"artifact",
+      "text": {
+        "description":"Stops compensation and rewards",
+        "detail":"Play after the winner of an encounter is determined. No compensation or defensive ally rewards may be collected this encounter."
+      },
+      "name":"Ionic Gas",
+      "roles": "any",
+      "phase": "resolution",
+      "special-effects":{
+        "stopCompReward":{}
+      }
+    },
+    "artifact-cancelAllies": {
+      "type":"artifact",
+      "text": {
+        "description":"Stop allies.",
+        "detail":"Play after alliances are formed during an encounter..."
+      },
+      "name":"Force Field",
+      "roles": "any",
+      "phase": "alliance",
+      "special-effects":{
+        "cancelAllies":{}
+      }
+    },
+    "artifact-harmPlayer": {
+      "type":"artifact",
+      "text": {
+        "description":"",
+        "detail":""
+      },
+      "name":"Ionic Gas",
+      "roles": "any",
+      "special-effects":{
+        "harmPlayer":{}
+      }
+    },
+    "artifact-failDeal": {
+      "type":"artifact",
+      "text": {
+        "description":"",
+        "detail":""
+      },
+      "name":"Ionic Gas",
+      "roles": "any",
+      "special-effects":{
+        "stopCompReward":{}
+      }
+    },
+    "artifact-forceNegotiation": {
+      "type":"artifact",
+      "text": {
+        "description":"",
+        "detail":""
+      },
+      "name":"Ionic Gas",
+      "roles": "any",
+      "special-effects":{
+        "stopCompReward":{}
+      }
+    },
+    "artifact-freeShips": {
+      "type":"artifact",
+      "text": {
+        "description":"",
+        "detail":""
+      },
+      "name":"Ionic Gas",
+      "roles": "any",
+      "special-effects":{
+        "stopCompReward":{}
+      }
+    },
+    "artifact-negateCard": {
+      "type":"artifact",
+      "text": {
+        "description":"",
+        "detail":""
+      },
+      "name":"Ionic Gas",
+      "roles": "any",
+      "special-effects":{
+        "stopCompReward":{}
+      }
+    },
+    "artifact-negatePower": {
+      "type":"artifact",
+      "text": {
+        "description":"",
+        "detail":""
+      },
+      "name":"Ionic Gas",
+      "roles": "any",
+      "special-effects":{
+        "stopCompReward":{}
+      }
+    }
+  },
+  "manifest": {
+    "encounter-0": 1,
+    "encounter-1": 1,
+    "encounter-4": 4,
+    "encounter-5": 1,
+    "encounter-6": 7,
+    "encounter-7": 1,
+    "encounter-8": 7,
+    "encounter-9": 9,
+    "encounter-10": 4,
+    "encounter-11": 1,
+    "encounter-12": 2,
+    "encounter-13": 1,
+    "encounter-14": 2,
+    "encounter-15": 1,
+    "encounter-20": 2,
+    "encounter-23": 1,
+    "encounter-30": 1,
+    "encounter-40": 1,
+    "encounter-negotiate": 15,
+    "encounter-morph": 1,
+    "reinforcement-2": 2,
+    "reinforcement-3": 3,
+    "reinforcement-5": 1,
+    "artifact-stopCompReward": 1,
+    "artifact-cancelAllies": 1,
+    "artifact-harmPlayer": 1,
+    "artifact-failDeal": 1,
+    "artifact-forceNegotiation": 1,
+    "artifact-freeShips": 2,
+    "artifact-negateCard": 2,
+    "artifact-negatePower": 2
+  }
+}

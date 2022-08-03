@@ -1,55 +1,58 @@
 {
   "templates": {
-    "encounter-a": {
-      "type":"encounter",
+    "destiny-a": {
+      "type":"destiny",
       "description":"",
       "target":"a",
       "special-effects":{}
     },
-    "encounter-b": {
-      "type":"encounter",
+    "destiny-b": {
+      "type":"destiny",
       "description":"",
       "target":"b",
       "special-effects":{}
     },
-    "encounter-c": {
-      "type":"encounter",
+    "destiny-c": {
+      "type":"destiny",
       "description":"",
       "target":"c",
       "special-effects":{}
     },
-    "encounter-d": {
-      "type":"encounter",
+    "destiny-d": {
+      "type":"destiny",
       "description":"",
       "target":"d",
       "special-effects":{}
     },
-    "encounter-e": {
-      "type":"encounter",
+    "destiny-e": {
+      "type":"destiny",
       "description":"",
       "target":"e",
       "special-effects":{}
     },
-    "encounter-f": {
-      "type":"encounter",
+    "destiny-f": {
+      "type":"destiny",
       "description":"",
       "target":"f",
       "special-effects":{}
     },
-    "encounter-wild": {
-      "type":"encounter",
+    "destiny-wild": {
+      "type":"destiny",
       "description":"",
       "target":"wild",
       "special-effects":{}
     }
   },
   "manifest": {
-    "encounter-a": 10,
-    "encounter-b": 10,
-    "encounter-c": 10,
-    "encounter-d": 10,
-    "encounter-e": 10,
-    "encounter-f": 10,
-    "encounter-wild": 10
+    "destiny-a": 3,
+    "destiny-b": 3,
+    "destiny-c": 3,
+    "destiny-d": 3,
+    "destiny-e": 3,
+    "destiny-f": 0,
+    "destiny-wild": 2,
+    "destiny-special-foreignColonies": 1,
+    "destiny-special-cardsInHand": 1,
+    "destiny-special-shipsInWarp": 1
   }
 }

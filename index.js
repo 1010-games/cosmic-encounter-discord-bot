@@ -6,12 +6,43 @@ const players = ['a','b','c','d','e','f']
 
 const context = {
   currentPlayerPosition: 0,
+  currentPhase: "",
   players: players,
   playerState: {},
   turnsPlayed: 0,
   turnsLimit: 6,
   randomize: randomize
 };
+
+// load game state from JSON
+const loadGameState = async (context) => {
+  const gameState = await import('./gamestate.json', {
+    assert: { type: "json" }
+  })
+
+  context = gameState;
+  return context;
+}
+
+// receiving player decision from discord message reaction
+// receiving player decision from discord slash command
+const onPlayerDecision = ()=> {
+
+}
+
+// mutuate state 
+const commitPlayerDecision = async (context) => {
+  const deckConfig = await import('./encounter-deck.json', {
+    assert: { type: "json" }
+  })
+}
+
+// write game state to JSON
+const saveGameState = async (context) => {
+  const deckConfig = await import('./encounter-deck.json', {
+    assert: { type: "json" }
+  })
+}
 
 const randomize = (options) => {
   return Math.floor( Math.random() * options );
@@ -54,6 +85,7 @@ const setupPlayers = async (context) => {
     let cosmicCardsDealt = drawCards(context.encounterDeck, 7)
     let playerState = {
       name: player,
+      currentRole: "neutral",
       cosmicCardsInHand: cosmicCardsDealt,
       cards: {
         encounter: [],
@@ -139,6 +171,12 @@ const revealPhase = stateMachine.createState( "reveal", false, entryAction);
 const resolutionPhase = stateMachine.createState( "resolution", false, entryAction);
 const nextTurnPhase = stateMachine.createState( "nextTurn", false, nextTurnAction);
 
+// TODO add post phase for each main phase
+// TODO add phase for interrupt artifact played
+// TODO add phase for interrupt flare played
+// TODO add phase for interrupt power activated
+
+
 // Notice true indicates completed state.
 const endGamePhase = stateMachine.createState( "endgame", true, finalAction); 
 
@@ -157,5 +195,6 @@ resolutionPhase.addTransition( "next", nextTurnPhase );
 nextTurnPhase.addTransition( "next", startTurnPhase );
 nextTurnPhase.addTransition( "endgame", endGamePhase );
 
-// Start the state machine
-stateMachine.start( startGamePhase );
+// Start the state machine at the current phase
+stateMachine.start( stateMachine._states[stateMachine._context["currentPhase"]] );
+// stateMachine.start( startGamePhase );
