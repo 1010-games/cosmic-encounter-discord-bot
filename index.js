@@ -1,22 +1,28 @@
 // index.js
 
-const { State, StateMachine } = require('@edium/fsm');
+// const { State, StateMachine } = require('@edium/fsm');
+import { State, StateMachine } from '@edium/fsm'
 
 const players = ['a','b','c','d','e','f']
 
-const context = {
+let seeds = {
+  gameState: './seeds/gamestate.json',
+  cosmicDeck: './seeds/cosmic-deck.json',
+  destinyDeck: './seeds/destiny-deck.json'
+}
+
+let context = {
   currentPlayerPosition: 0,
   currentPhase: "",
   players: players,
   playerState: {},
   turnsPlayed: 0,
   turnsLimit: 6,
-  randomize: randomize
 };
 
 // load game state from JSON
 const loadGameState = async (context) => {
-  const gameState = await import('./gamestate.json', {
+  const gameState = await import(seeds.gameState, {
     assert: { type: "json" }
   })
 
@@ -32,16 +38,16 @@ const onPlayerDecision = ()=> {
 
 // mutuate state 
 const commitPlayerDecision = async (context) => {
-  const deckConfig = await import('./encounter-deck.json', {
+  const deckConfig = await import(seeds.encounterDeck, {
     assert: { type: "json" }
   })
 }
 
 // write game state to JSON
 const saveGameState = async (context) => {
-  const deckConfig = await import('./encounter-deck.json', {
-    assert: { type: "json" }
-  })
+  // const deckConfig = await import('./seeds/encounter-deck.json', {
+  //   assert: { type: "json" }
+  // })
 }
 
 const randomize = (options) => {
@@ -72,7 +78,7 @@ const drawCards = (deck, cardsDrawn) => {
 }
 
 const setupGameObjects = async (context) => {
-  const deckConfig = await import('./encounter-deck.json', {
+  const deckConfig = await import(seeds.cosmicDeck, {
     assert: { type: "json" }
   })
   const cosmicDeck = createDeck(deckConfig.default.templates, deckConfig.default.manifest)
@@ -157,44 +163,55 @@ const finalAction = ( state ) => {
   console.log("finished")
 };
 
+const createGame = (settings) => {
+
+  // if (settings.seeds) {
+  //   seeds = settings.seeds;
+  console.log('createGame')
+
+  const stateMachine = new StateMachine('CosmicEncounter', context);
+  const startGamePhase = stateMachine.createState( "startGame", false, startGameAction);
+  const startTurnPhase = stateMachine.createState( "startTurn", false, startTurnAction);
+  const regroupPhase = stateMachine.createState( "regroup", false, entryAction);
+  const destinyPhase = stateMachine.createState( "destiny", false, entryAction);
+  const launchPhase = stateMachine.createState( "launch", false, entryAction);
+  const alliancePhase = stateMachine.createState( "alliance", false, entryAction);
+  const planningPhase = stateMachine.createState( "planning", false, entryAction);
+  const revealPhase = stateMachine.createState( "reveal", false, entryAction);
+  const resolutionPhase = stateMachine.createState( "resolution", false, entryAction);
+  const nextTurnPhase = stateMachine.createState( "nextTurn", false, nextTurnAction);
+
+  // TODO add post phase for each main phase
+  // TODO add phase for interrupt artifact played
+  // TODO add phase for interrupt flare played
+  // TODO add phase for interrupt power activated
 
 
-const stateMachine = new StateMachine('CosmicEncounter', context);
-const startGamePhase = stateMachine.createState( "startGame", false, startGameAction);
-const startTurnPhase = stateMachine.createState( "startTurn", false, startTurnAction);
-const regroupPhase = stateMachine.createState( "regroup", false, entryAction);
-const destinyPhase = stateMachine.createState( "destiny", false, entryAction);
-const launchPhase = stateMachine.createState( "launch", false, entryAction);
-const alliancePhase = stateMachine.createState( "alliance", false, entryAction);
-const planningPhase = stateMachine.createState( "planning", false, entryAction);
-const revealPhase = stateMachine.createState( "reveal", false, entryAction);
-const resolutionPhase = stateMachine.createState( "resolution", false, entryAction);
-const nextTurnPhase = stateMachine.createState( "nextTurn", false, nextTurnAction);
+  // Notice true indicates completed state.
+  const endGamePhase = stateMachine.createState( "endgame", true, finalAction); 
 
-// TODO add post phase for each main phase
-// TODO add phase for interrupt artifact played
-// TODO add phase for interrupt flare played
-// TODO add phase for interrupt power activated
+  // Define all state transitions
+  startGamePhase.addTransition( "next", startTurnPhase );
 
+  startTurnPhase.addTransition( "next", regroupPhase );
+  regroupPhase.addTransition( "next", destinyPhase );
+  destinyPhase.addTransition( "next", launchPhase );
+  launchPhase.addTransition( "next", alliancePhase );
+  alliancePhase.addTransition( "next", planningPhase );
+  planningPhase.addTransition( "next", revealPhase );
+  revealPhase.addTransition( "next", resolutionPhase );
+  resolutionPhase.addTransition( "next", nextTurnPhase );
 
-// Notice true indicates completed state.
-const endGamePhase = stateMachine.createState( "endgame", true, finalAction); 
+  nextTurnPhase.addTransition( "next", startTurnPhase );
+  nextTurnPhase.addTransition( "endgame", endGamePhase );
 
-// Define all state transitions
-startGamePhase.addTransition( "next", startTurnPhase );
+  // Start the state machine at the current phase
+  // stateMachine.start( stateMachine._states[stateMachine._context["currentPhase"]] );
+  // stateMachine.start( startGamePhase );
 
-startTurnPhase.addTransition( "next", regroupPhase );
-regroupPhase.addTransition( "next", destinyPhase );
-destinyPhase.addTransition( "next", launchPhase );
-launchPhase.addTransition( "next", alliancePhase );
-alliancePhase.addTransition( "next", planningPhase );
-planningPhase.addTransition( "next", revealPhase );
-revealPhase.addTransition( "next", resolutionPhase );
-resolutionPhase.addTransition( "next", nextTurnPhase );
+  // return stateMachine
+}
 
-nextTurnPhase.addTransition( "next", startTurnPhase );
-nextTurnPhase.addTransition( "endgame", endGamePhase );
-
-// Start the state machine at the current phase
-stateMachine.start( stateMachine._states[stateMachine._context["currentPhase"]] );
-// stateMachine.start( startGamePhase );
+export {
+  createGame
+}

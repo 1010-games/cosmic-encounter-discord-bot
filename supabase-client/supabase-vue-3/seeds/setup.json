@@ -1,0 +1,112 @@
+{
+  "factions": {
+    "a":{
+      "name":"beetles",
+      "iconUrl":"",
+      "players":[
+        {
+          "discordId":"",
+          "avatarUrl":"",
+          "emoji":"",
+          "name":"mike"
+        }
+      ],
+      "fighters": 20,
+      "alienPower": {
+        "name":"",
+        "descrption":"",
+        "effect":""
+      }
+    },
+    "b":{
+      "name":"wolves",
+      "iconUrl":"",
+      "players":[
+        {
+          "discordId":"",
+          "avatarUrl":"",
+          "emoji":"",
+          "name":"filip"
+        }
+      ],
+      "fighters": 20,
+      "alienPower": {
+        "name":"",
+        "descrption":"",
+        "effect":""
+      }
+    },
+    "c":{
+      "name":"merfolk",
+      "iconUrl":"",
+      "players":[
+        {
+          "discordId":"",
+          "avatarUrl":"",
+          "emoji":"",
+          "name":"dano"
+        }
+      ],
+      "fighters": 20,
+      "alienPower": {
+        "name":"dano",
+        "descrption":"",
+        "effect":""
+      }
+    },
+    "d":{
+      "name":"raptors",
+      "iconUrl":"",
+      "players":[
+        {
+          "discordId":"",
+          "avatarUrl":"",
+          "emoji":"",
+          "name":""
+        }
+      ],
+      "fighters": 20,
+      "alienPower": {
+        "name":"dano",
+        "descrption":"",
+        "effect":""
+      }
+    },
+    "e":{
+      "name":"turtles",
+      "iconUrl":"",
+      "players":[
+        {
+          "discordId":"",
+          "avatarUrl":"",
+          "emoji":"",
+          "name":""
+        }
+      ],
+      "fighters": 20,
+      "alienPower": {
+        "name":"phil",
+        "descrption":"",
+        "effect":""
+      }
+    },
+    "f":{
+      "name":"cats",
+      "iconUrl":"",
+      "players":[
+        {
+          "discordId":"",
+          "avatarUrl":"",
+          "emoji":"",
+          "name":""
+        }
+      ],
+      "fighters": 20,
+      "alienPower": {
+        "name":"yuga",
+        "descrption":"",
+        "effect":""
+      }
+    }
+  }
+}

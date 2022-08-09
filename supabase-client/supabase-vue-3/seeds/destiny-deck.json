@@ -1,0 +1,58 @@
+{
+  "templates": {
+    "destiny-a": {
+      "type":"destiny",
+      "description":"",
+      "target":"a",
+      "special-effects":{}
+    },
+    "destiny-b": {
+      "type":"destiny",
+      "description":"",
+      "target":"b",
+      "special-effects":{}
+    },
+    "destiny-c": {
+      "type":"destiny",
+      "description":"",
+      "target":"c",
+      "special-effects":{}
+    },
+    "destiny-d": {
+      "type":"destiny",
+      "description":"",
+      "target":"d",
+      "special-effects":{}
+    },
+    "destiny-e": {
+      "type":"destiny",
+      "description":"",
+      "target":"e",
+      "special-effects":{}
+    },
+    "destiny-f": {
+      "type":"destiny",
+      "description":"",
+      "target":"f",
+      "special-effects":{}
+    },
+    "destiny-wild": {
+      "type":"destiny",
+      "description":"",
+      "target":"wild",
+      "special-effects":{}
+    }
+  },
+  "manifest": {
+    "destiny-a": 3,
+    "destiny-b": 3,
+    "destiny-c": 3,
+    "destiny-d": 3,
+    "destiny-e": 3,
+    "destiny-f": 0,
+    "destiny-wild": 2,
+    "destiny-special-foreignColonies": 1,
+    "destiny-special-cardsInHand": 1,
+    "destiny-special-shipsInWarp": 1
+  }
+}

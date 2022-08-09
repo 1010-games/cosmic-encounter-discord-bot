@@ -1,0 +1,8 @@
+{
+  "currentPlayerPosition": 0,
+  "currentPhase": "startGame",
+  "players": [],
+  "playerState": {},
+  "turnsPlayed": 0,
+  "turnsLimit": 6
+}
